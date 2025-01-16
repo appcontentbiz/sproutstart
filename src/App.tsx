@@ -1,23 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { ThemeProvider, CssBaseline } from '@mui/material';
-import { BrowserRouter } from 'react-router-dom';
-import AppRoutes from './routes/AppRoutes';
-import { theme } from './styles/theme';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import { AppProvider } from './context/AppContext';
+import { theme } from './styles/theme';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <AppProvider>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <AppRoutes />
       </AppProvider>
     </ThemeProvider>
   );
