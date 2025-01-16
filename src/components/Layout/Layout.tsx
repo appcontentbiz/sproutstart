@@ -1,14 +1,18 @@
 import { Box, Container } from '@mui/material';
-import { Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { ReactNode } from 'react';
 
-const Layout = () => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navigation />
       <Container component="main" sx={{ flexGrow: 1, py: 4 }}>
-        <Outlet />
+        {children}
       </Container>
       <Footer />
     </Box>

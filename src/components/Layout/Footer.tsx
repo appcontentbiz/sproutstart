@@ -1,4 +1,5 @@
-import { Box, Container, Typography, Link, Grid } from '@mui/material';
+import { Box, Container, Typography, Grid } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -28,10 +29,18 @@ const Footer = () => {
             <Typography variant="h6" color="text.primary" gutterBottom>
               Quick Links
             </Typography>
-            <Link href="/learning" color="text.secondary" display="block">Learning Center</Link>
-            <Link href="/stores" color="text.secondary" display="block">Local Stores</Link>
-            <Link href="/community" color="text.secondary" display="block">Community</Link>
-            <Link href="/guide" color="text.secondary" display="block">Plant Guide</Link>
+            <RouterLink to="/learning" style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}>
+              <Typography variant="body2" color="text.secondary">Learning Center</Typography>
+            </RouterLink>
+            <RouterLink to="/stores" style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}>
+              <Typography variant="body2" color="text.secondary">Local Stores</Typography>
+            </RouterLink>
+            <RouterLink to="/community" style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}>
+              <Typography variant="body2" color="text.secondary">Community</Typography>
+            </RouterLink>
+            <RouterLink to="/plants" style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}>
+              <Typography variant="body2" color="text.secondary">Plant Guide</Typography>
+            </RouterLink>
           </Grid>
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" color="text.primary" gutterBottom>
@@ -45,10 +54,10 @@ const Footer = () => {
         </Grid>
         <Box mt={3}>
           <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="/">
+            {'Copyright '}
+            <RouterLink to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
               SproutStart
-            </Link>{' '}
+            </RouterLink>{' '}
             {new Date().getFullYear()}
           </Typography>
         </Box>

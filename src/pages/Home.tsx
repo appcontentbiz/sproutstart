@@ -27,7 +27,7 @@ const Home = () => {
       title: 'Plant Guide',
       description: 'Explore different plant types and growing techniques.',
       image: '/images/guide.jpg',
-      path: '/guide'
+      path: '/plants'
     }
   ];
 
@@ -52,41 +52,36 @@ const Home = () => {
             Welcome to SproutStart
           </Typography>
           <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            Your journey into farming begins here. Whether you're starting with a small garden
-            or dreaming of a full farm, we're here to guide you every step of the way.
+            Begin your farming journey with expert guidance, community support, and essential resources.
+            Whether you're a beginner or looking to expand your knowledge, we're here to help you grow.
           </Typography>
           <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2 }}>
             <Button variant="contained" color="primary" onClick={() => navigate('/learning')}>
               Start Learning
             </Button>
-            <Button variant="outlined" color="primary" onClick={() => navigate('/guide')}>
-              Explore Plants
+            <Button variant="outlined" color="primary" onClick={() => navigate('/community')}>
+              Join Community
             </Button>
           </Box>
         </Container>
       </Box>
 
       {/* Features Section */}
-      <Container sx={{ py: 8 }} maxWidth="md">
+      <Container sx={{ py: 8 }} maxWidth="lg">
         <Grid container spacing={4}>
           {features.map((feature) => (
-            <Grid item key={feature.title} xs={12} sm={6} md={6}>
+            <Grid item key={feature.title} xs={12} sm={6} md={3}>
               <Card
-                sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  cursor: 'pointer'
-                }}
+                sx={{ height: '100%', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
                 onClick={() => navigate(feature.path)}
               >
                 <CardMedia
                   component="div"
                   sx={{
-                    pt: '56.25%', // 16:9
-                    bgcolor: 'grey.200'
+                    pt: '56.25%',
+                    bgcolor: 'grey.200',
                   }}
-                  // image={feature.image}
+                  title={feature.title}
                 />
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography gutterBottom variant="h5" component="h2">
