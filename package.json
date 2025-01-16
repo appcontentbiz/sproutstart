@@ -15,10 +15,10 @@
     "deploy": "npm run deploy:prod"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.3",
-    "@mui/material": "^5.15.3",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^5.16.14",
+    "@mui/material": "^5.16.14",
     "@react-google-maps/api": "^2.19.2",
     "@tensorflow/tfjs": "^4.16.0",
     "axios": "^1.6.5",
