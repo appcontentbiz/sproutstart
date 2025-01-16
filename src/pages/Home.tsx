@@ -1,93 +1,72 @@
+import React from 'react';
 import { Box, Container, Typography, Button, Grid, Card, CardContent, CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import HeroSection from '../components/Home/HeroSection';
 
 const Home = () => {
   const navigate = useNavigate();
 
   const features = [
     {
-      title: 'Learning Center',
-      description: 'Start your farming journey with comprehensive guides and tutorials.',
-      image: '/images/learning.jpg',
-      path: '/learning'
-    },
-    {
-      title: 'Local Stores',
-      description: 'Find farming supplies and equipment in stores near you.',
-      image: '/images/store.jpg',
-      path: '/stores'
-    },
-    {
-      title: 'Community',
-      description: 'Connect with fellow farmers and share experiences.',
-      image: '/images/community.jpg',
-      path: '/community'
-    },
-    {
       title: 'Plant Guide',
-      description: 'Explore different plant types and growing techniques.',
-      image: '/images/guide.jpg',
-      path: '/plants'
+      description: 'Learn about different plants and how to grow them successfully.',
+      image: '/assets/images/plant-guide.jpg',
+      path: '/plant-guide'
+    },
+    {
+      title: 'Farming Styles',
+      description: 'Explore various farming techniques and methods.',
+      image: '/assets/images/farming-styles.jpg',
+      path: '/farming-styles'
+    },
+    {
+      title: 'Tutorials',
+      description: 'Step-by-step guides for beginner farmers.',
+      image: '/assets/images/tutorials.jpg',
+      path: '/tutorials'
+    },
+    {
+      title: 'Local Resources',
+      description: 'Find farming supplies and equipment near you.',
+      image: '/assets/images/local-stores.jpg',
+      path: '/store-locator'
     }
   ];
 
   return (
     <Box>
-      {/* Hero Section */}
-      <Box
-        sx={{
-          bgcolor: 'background.paper',
-          pt: 8,
-          pb: 6,
-        }}
-      >
-        <Container maxWidth="sm">
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="text.primary"
-            gutterBottom
-          >
-            Welcome to SproutStart
-          </Typography>
-          <Typography variant="h5" align="center" color="text.secondary" paragraph>
-            Begin your farming journey with expert guidance, community support, and essential resources.
-            Whether you're a beginner or looking to expand your knowledge, we're here to help you grow.
-          </Typography>
-          <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2 }}>
-            <Button variant="contained" color="primary" onClick={() => navigate('/learning')}>
-              Start Learning
-            </Button>
-            <Button variant="outlined" color="primary" onClick={() => navigate('/community')}>
-              Join Community
-            </Button>
-          </Box>
-        </Container>
-      </Box>
-
+      <HeroSection />
+      
       {/* Features Section */}
-      <Container sx={{ py: 8 }} maxWidth="lg">
+      <Container maxWidth="lg" sx={{ py: 8 }}>
         <Grid container spacing={4}>
-          {features.map((feature) => (
-            <Grid item key={feature.title} xs={12} sm={6} md={3}>
+          {features.map((feature, index) => (
+            <Grid item key={index} xs={12} sm={6} md={3}>
               <Card
-                sx={{ height: '100%', display: 'flex', flexDirection: 'column', cursor: 'pointer' }}
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  cursor: 'pointer',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: 4,
+                    transition: 'all 0.3s ease-in-out'
+                  }
+                }}
                 onClick={() => navigate(feature.path)}
               >
                 <CardMedia
-                  component="div"
-                  sx={{
-                    pt: '56.25%',
-                    bgcolor: 'grey.200',
-                  }}
-                  title={feature.title}
+                  component="img"
+                  height="140"
+                  image={feature.image}
+                  alt={feature.title}
                 />
-                <CardContent sx={{ flexGrow: 1 }}>
+                <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {feature.title}
                   </Typography>
-                  <Typography>
+                  <Typography color="text.secondary">
                     {feature.description}
                   </Typography>
                 </CardContent>
@@ -96,6 +75,37 @@ const Home = () => {
           ))}
         </Grid>
       </Container>
+
+      {/* Community Section */}
+      <Box sx={{ bgcolor: 'background.paper', py: 6 }}>
+        <Container maxWidth="lg">
+          <Typography variant="h4" align="center" gutterBottom>
+            Join Our Community
+          </Typography>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                onClick={() => navigate('/events')}
+              >
+                Upcoming Events
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                onClick={() => navigate('/mentors')}
+              >
+                Find a Mentor
+              </Button>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
     </Box>
   );
 };
