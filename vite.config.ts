@@ -15,7 +15,9 @@ export default defineConfig({
     assetsDir: 'assets',
     sourcemap: true,
     rollupOptions: {
-      external: [],
+      external: [
+        '@mui/icons-material/Eco'
+      ],
       output: {
         manualChunks: {
           vendor: [
@@ -26,11 +28,21 @@ export default defineConfig({
             '@mui/icons-material'
           ],
         },
+        globals: {
+          '@mui/icons-material/Eco': 'MaterialIcons.Eco'
+        }
       },
     },
   },
   optimizeDeps: {
-    include: ['@mui/material', '@mui/icons-material'],
+    include: [
+      '@mui/material',
+      '@mui/icons-material',
+      '@mui/icons-material/Eco'
+    ],
+    esbuildOptions: {
+      target: 'es2020'
+    }
   },
   server: {
     port: 3000,
